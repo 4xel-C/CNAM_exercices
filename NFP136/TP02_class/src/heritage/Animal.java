@@ -1,12 +1,16 @@
 package heritage;
 
 public abstract class Animal {
+
+    static private int nombresAnimaux = 0;
+
     private String race;
     private int age;
 
     public Animal(String race, int age){
         this.race = race;
         this.age = age;
+        nombresAnimaux++;
     }
 
     public void naitre(){
