@@ -36,12 +36,16 @@ public class ExercicesPiles {
 		}
 	}
 	
+	/**
+	 * Fonction pour calculer une expression RP ne contenant que des nombres positifs avec des additions ou des soustractions.
+	 * @param expression
+	 * @return Retourne le resultat sous forme d'entier, retourne 0 si l'expression est erroné.
+	 */
 	public static int calculerRPN(String expression) {
 		
 		// Instanciation de la pile pour traquer les nombres
 		PileArrayList<Integer> pile = new PileArrayList<>();
 		int len = expression.length();
-		int result = 0;
 		
 		// Iteration sur chacun des caratères
 		for (int i = 0; i < len; i++) {
@@ -51,19 +55,32 @@ public class ExercicesPiles {
 				if (Character.isDigit(car)) {
 					int chiffre = Character.getNumericValue(car);
 					pile.push(chiffre);
+					
 				} else if (car == '+') {
-					result += pile.pop() + pile.pop();	
+					int result = pile.pop() + pile.pop();	
+					pile.push(result);
+					
 				} else if (car == '-') {
 					int num1 = pile.pop();
 					int num2 = pile.pop();
-					result += num2 - num1;
+					int result = num2 - num1;
+					pile.push(result);
 				}
+				
 			} catch (IllegalArgumentException e) {
 				System.out.println("Expression invalide !");
 				return 0;
 			}
 		}
-		return result;
+		
+		// Verifie si la pile contient 1 élément:
+		if (pile.hauteur() == 1) {
+			return pile.getTop();
+			
+		} else {
+			System.out.println("Expression invalide !");
+			return 0;
+		}
 	}
 		
 	
@@ -127,10 +144,14 @@ public class ExercicesPiles {
 		System.out.println();
 		
 		System.out.println("Exercice 3.2");
-		String expression1 = "3 4 7 +";
+		String expression1 = "4 7 + 5 6 - -";
 		System.out.println("Resolution de l'expression: " + expression1);
 		System.out.println(calculerRPN(expression1));
+		System.out.println();
 		
+		String expression2 = "3 4 7 + 5 6 - -";
+		System.out.println("Resolution de l'expression: " + expression2);
+		System.out.println(calculerRPN(expression2));
 	}
 
 }
