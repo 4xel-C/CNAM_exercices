@@ -87,7 +87,7 @@ public class ExercicesPiles {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Test des fonctionnalités Exercice s1 et 2: ");
+		System.out.println("Test des fonctionnalités Exercices 1 et 2: ");
 		
 		// Instanciation de la pile 
 		PileArrayList<Integer> pile = new PileArrayList<>();
@@ -110,7 +110,6 @@ public class ExercicesPiles {
 		
 		System.out.println();
 		System.out.println("Pop l'élément: " + pile.pop());
-		System.out.println("Inversion de la pile");
 		pile.printPile();
 		
 		System.out.println();
