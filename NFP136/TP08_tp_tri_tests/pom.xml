@@ -1,0 +1,109 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.cnam</groupId>
+  <artifactId>testAndLogs</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Test and logs</name>
+  <description>Un projet pour implémenter des tests et des logs</description>
+  <packaging>jar</packaging>
+  
+  <dependencyManagement>
+  
+  <!-- log4j version management -->
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-bom</artifactId>
+      <version>2.24.3</version>
+      <scope>import</scope>
+      <type>pom</type>
+    </dependency>
+  </dependencies>
+</dependencyManagement>
+  
+  
+  <dependencies>
+  <!-- log4j-api -->
+  <dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-api</artifactId>
+  </dependency>
+
+  <!-- log4j-core-->
+  <dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-core</artifactId>
+  </dependency>
+	
+	<!-- Log4j JSON-encoding support -->
+	<dependency>
+	  <groupId>org.apache.logging.log4j</groupId>
+	  <artifactId>log4j-layout-template-json</artifactId>
+	  <scope>runtime</scope>
+	</dependency>
+
+    <!-- jUnit -->
+   <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>5.7.0</version>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>5.7.0</version>
+        <scope>test</scope>
+    </dependency>
+    
+</dependencies>
+
+
+  <build>
+  
+    
+    <plugins>
+    
+    <!-- JavaDoc build -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.11.2</version>
+        <executions>
+          <execution>
+            <goals>
+            	<goal>javadoc</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>  
+      
+      <!-- création du JAR -->
+
+	<plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-shade-plugin</artifactId>
+	    <version>3.4.1</version>
+	    <executions>
+	        <execution>
+	            <phase>package</phase>
+	            <goals>
+	                <goal>shade</goal>
+	            </goals>
+	            <configuration>
+	                <transformers>
+	                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+	                        <mainClass>app.Main</mainClass>
+	                    </transformer>
+	                </transformers>
+	            </configuration>
+	        </execution>
+	    </executions>
+	</plugin>
+
+      
+      
+    </plugins>
+  </build>
+
+</project>
