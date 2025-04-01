@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="sudoku" project="sudoku" tests="12" started="12" failures="0" errors="0" ignored="0">
+  <testsuite name="SudokuTest" time="0.0" uniqueid="[engine:junit-jupiter]/[class:SudokuTest]">
+    <testcase name="testIsValidInvalidNumberRow" classname="SudokuTest" time="0.0" displayname="testIsValidInvalidNumberRow()" uniqueid="[engine:junit-jupiter]/[class:SudokuTest]/[method:testIsValidInvalidNumberRow()]"/>
+    <testcase name="testSudokuUnexistantFile" classname="SudokuTest" time="0.0" displayname="testSudokuUnexistantFile()" uniqueid="[engine:junit-jupiter]/[class:SudokuTest]/[method:testSudokuUnexistantFile()]"/>
+    <testcase name="testSolveGiveGoodSolution" classname="SudokuTest" time="0.0" displayname="testSolveGiveGoodSolution()" uniqueid="[engine:junit-jupiter]/[class:SudokuTest]/[method:testSolveGiveGoodSolution()]"/>
+    <testcase name="testReadGridValidFile" classname="SudokuTest" time="0.0" displayname="testReadGridValidFile()" uniqueid="[engine:junit-jupiter]/[class:SudokuTest]/[method:testReadGridValidFile()]"/>
+    <testcase name="testInvalidGridFormat" classname="SudokuTest" time="0.0" displayname="testInvalidGridFormat()" uniqueid="[engine:junit-jupiter]/[class:SudokuTest]/[method:testInvalidGridFormat()]"/>
+    <testcase name="testFindEmptyFull" classname="SudokuTest" time="0.0" displayname="testFindEmptyFull()" uniqueid="[engine:junit-jupiter]/[class:SudokuTest]/[method:testFindEmptyFull()]"/>
+    <testcase name="testFindEmpty" classname="SudokuTest" time="0.0" displayname="testFindEmpty()" uniqueid="[engine:junit-jupiter]/[class:SudokuTest]/[method:testFindEmpty()]"/>
+    <testcase name="testSolveOriginalGridIfImpossible" classname="SudokuTest" time="0.0" displayname="testSolveOriginalGridIfImpossible()" uniqueid="[engine:junit-jupiter]/[class:SudokuTest]/[method:testSolveOriginalGridIfImpossible()]"/>
+    <testcase name="testIsValidInvalidNumberSubsquare" classname="SudokuTest" time="0.0" displayname="testIsValidInvalidNumberSubsquare()" uniqueid="[engine:junit-jupiter]/[class:SudokuTest]/[method:testIsValidInvalidNumberSubsquare()]"/>
+    <testcase name="testIsValidValidNumber" classname="SudokuTest" time="0.0" displayname="testIsValidValidNumber()" uniqueid="[engine:junit-jupiter]/[class:SudokuTest]/[method:testIsValidValidNumber()]"/>
+    <testcase name="testSolveReturnOriginalGridIfAlreadySolved" classname="SudokuTest" time="0.0" displayname="testSolveReturnOriginalGridIfAlreadySolved()" uniqueid="[engine:junit-jupiter]/[class:SudokuTest]/[method:testSolveReturnOriginalGridIfAlreadySolved()]"/>
+    <testcase name="testIsValidInvalidNumberColumn" classname="SudokuTest" time="0.0" displayname="testIsValidInvalidNumberColumn()" uniqueid="[engine:junit-jupiter]/[class:SudokuTest]/[method:testIsValidInvalidNumberColumn()]"/>
+  </testsuite>
+</testrun>

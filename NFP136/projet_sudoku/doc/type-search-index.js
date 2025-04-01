@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"sudoku","l":"MonSudoku"},{"p":"sudoku","l":"Position"},{"p":"sudoku","l":"Sudoku"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"MonSudoku"},{"p":"<Unnamed>","l":"Position"},{"p":"<Unnamed>","l":"Sudoku"},{"p":"<Unnamed>","l":"TestGrids"}];updateSearchResults();

@@ -205,11 +205,6 @@ public class Sudoku {
 		// Try the number from 1 to 9
 		for (int num = 1; num < 10; num++) {
 			
-			// if there is 2 solutions found, stop all the iterations.
-			if (solutionCounter == 2) {
-				return;
-			}
-			
 			
 			// if we find a valid number to store in the empty cell, update the grid
 			if (isValid(emptyCell, num)) {
@@ -217,6 +212,11 @@ public class Sudoku {
 				
 				// Recursively call the solve function to fill the next empty cell
 				solve();
+				
+				// if there is 2 solutions found, stop all the iterations.
+				if (solutionCounter == 2) {
+					return;
+				}
 				
 				// If the next recursive solve function does not find any possibilities, this is a dead end, re-update the cell to 0
 				grid[emptyCell.row][emptyCell.col] = 0;

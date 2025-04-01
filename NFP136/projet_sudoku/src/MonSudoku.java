@@ -10,6 +10,7 @@ public class MonSudoku {
 	 * @param args Les arguments passés au programme. Le programme est censé recevoir le nom du fichier texte contenant la grille de sudoku.
 	 * Une grille d'exemple est proposé sous le nom  "grille1.txt".
 	 * @throws FileNotFoundException Si le fichier spécifié n'est pas trouvé.
+	 * @author Axel Cano
 	 */
 	public static void main(String[] args) throws FileNotFoundException {
 		

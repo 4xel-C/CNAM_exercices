@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
@@ -106,8 +107,116 @@ class SudokuTest {
 			Sudoku sudoku = generateMockSudoku(TestGrids.fullText);
 	        assertEquals(null, sudoku.findEmpty());
 	        Files.delete(sudoku.getFilePath());
+	    }); 
+	}
+	
+	
+	/**
+	 * Teste la méthode isValid() avec des nombres valides.
+	 */
+	@Test
+	void testIsValidValidNumber() {
+		assertDoesNotThrow(() -> {
+			Sudoku sudoku = generateMockSudoku(TestGrids.validText);
+	        Position empty = sudoku.findEmpty();
+	        assertEquals(true, sudoku.isValid(empty, 5));
+	        assertEquals(true, sudoku.isValid(empty, 8));
+	        assertEquals(true, sudoku.isValid(empty, 9));
+	        Files.delete(sudoku.getFilePath());
 	    });
-		
+	}
+	
+	/**
+	 * Teste la méthode isValid() avec des nombres invalides sur la ligne.
+	 */
+	@Test
+	void testIsValidInvalidNumberRow() {
+		assertDoesNotThrow(() -> {
+			Sudoku sudoku = generateMockSudoku(TestGrids.validText);
+	        Position empty = sudoku.findEmpty();
+	        assertEquals(false, sudoku.isValid(empty, 6));
+	        assertEquals(false, sudoku.isValid(empty, 3));
+	        Files.delete(sudoku.getFilePath());
+	    });
+	}
+	
+	
+	/**
+	 * Teste la méthode isValid() avec des nombres invalides sur la colonne.
+	 */
+	@Test
+	void testIsValidInvalidNumberColumn() {
+		assertDoesNotThrow(() -> {
+			Sudoku sudoku = generateMockSudoku(TestGrids.validText);
+	        Position empty = sudoku.findEmpty();
+	        assertEquals(false, sudoku.isValid(empty, 1));
+	        assertEquals(false, sudoku.isValid(empty, 7));
+	        assertEquals(false,  sudoku.isValid(empty, 4));
+	        Files.delete(sudoku.getFilePath());
+	    });
+	}
+	
+	
+	/**
+	 * Teste la méthode isValid() avec des nombres invalides sur le sub-square 3x3.
+	 */
+	@Test
+	void testIsValidInvalidNumberSubsquare() {
+		assertDoesNotThrow(() -> {
+			Sudoku sudoku = generateMockSudoku(TestGrids.validText);
+	        Position empty = sudoku.findEmpty();
+	        assertEquals(false, sudoku.isValid(empty, 1));
+	        assertEquals(false, sudoku.isValid(empty, 2));
+	        assertEquals(false, sudoku.isValid(empty, 3));
+	        assertEquals(false, sudoku.isValid(empty, 6));
+	        assertEquals(false, sudoku.isValid(empty, 7));
+	        Files.delete(sudoku.getFilePath());
+	    });
+	}
+	
+	
+	/**
+	 * Teste la validité de la dernière solution fournit par solve().
+	 */
+	@Test
+	void testSolveGiveGoodSolution() {
+		assertDoesNotThrow(() -> {
+			Sudoku sudoku = generateMockSudoku(TestGrids.validText);
+			Sudoku solved = generateMockSudoku(TestGrids.solution);
+			sudoku.solve();
+	        assertTrue(Arrays.deepEquals(solved.grid, sudoku.grid));
+	        Files.delete(sudoku.getFilePath());
+	    });
+	}
+	
+	
+	/**
+	 * Vérifie que solve() retourne bien le même sudoku si un Sudoku totalement rempli est passé.
+	 */
+	@Test
+	void testSolveReturnOriginalGridIfAlreadySolved() {
+		assertDoesNotThrow(() -> {
+			Sudoku toSolve = generateMockSudoku(TestGrids.solution);
+			toSolve.solve();
+			Sudoku noSolve = generateMockSudoku(TestGrids.solution);
+	        assertTrue(Arrays.deepEquals(toSolve.grid, noSolve.grid));
+	        Files.delete(sudoku.getFilePath());
+	    });
+	}
+	
+	
+	/**
+	 * Vérifie que solve() ne puisse pas fournir de solutions et retourne la grille originale si le sudoku est impossible à résoudre.
+	 */
+	@Test
+	void testSolveOriginalGridIfImpossible() {
+		assertDoesNotThrow(() -> {
+			Sudoku toSolve = generateMockSudoku(TestGrids.unsolvableSudoku);
+			toSolve.solve();
+			Sudoku noSolve = generateMockSudoku(TestGrids.unsolvableSudoku);
+	        assertTrue(Arrays.deepEquals(toSolve.grid, noSolve.grid));
+	        Files.delete(sudoku.getFilePath());
+	    });
 	}
 
 }
