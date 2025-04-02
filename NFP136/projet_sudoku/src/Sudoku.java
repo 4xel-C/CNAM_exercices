@@ -228,7 +228,7 @@ public class Sudoku {
 	}
 	
 	/**
-	 * Getter pour récupérer le filePath (utilisé ans les tests)
+	 * Getter pour récupérer le filePath (utilisé dans les tests)
 	 * @return filePath du fichier utilisé.
 	 */
 	public Path getFilePath() {
