@@ -203,7 +203,7 @@ public class Sudoku {
 		}
 		
 		// Try the number from 1 to 9
-		for (int num = 1; num < 10; num++) {
+		for (int num = 1; num <= size; num++) {
 			
 			
 			// if we find a valid number to store in the empty cell, update the grid
