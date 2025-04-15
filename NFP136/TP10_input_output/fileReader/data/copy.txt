@@ -1,0 +1,2 @@
+Ceci est un exemple.
+L'encode original est en UTF-8.
