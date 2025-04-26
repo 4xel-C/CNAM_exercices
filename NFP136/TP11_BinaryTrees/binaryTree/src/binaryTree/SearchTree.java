@@ -1,8 +1,78 @@
 package binaryTree;
 
-public class SearchTree {
+public class SearchTree<T extends Comparable<T>> implements BinTree<T> {
 	
-	public static <T> T trouveMax(BinTree<T> tree) {
+	BinTree<T> tree;
+	
+	// Construction d'un arbre vide.
+	public SearchTree() {
+		tree = new Feuille<>();
+	}
+	
+	@Override
+	public boolean estVide() {
+		return tree.estVide();
+	}
+
+	@Override
+	public T racine() {
+		return tree.racine();
+	}
+
+	@Override
+	public BinTree<T> sag() {
+		return tree.sag();
+	}
+
+	@Override
+	public BinTree<T> sad() {
+		return tree.sad();
+	}
+
+	@Override
+	public int hauteur() {
+		return tree.hauteur();
+	}
+
+	@Override
+	public int taille() {
+		return tree.taille();
+	}
+
+	@Override
+	public String prefixe() {
+		return tree.prefixe();
+	}
+
+	@Override
+	public String postfixe() {
+		return tree.postfixe();
+	}
+
+	@Override
+	public String infixe() {
+		return tree.infixe();
+	}
+	
+	// Surcharge les méthodes insert & delete pour être appelé via l'instance, sans passer l'arbre en paramètre et modifie In place.
+	public void insert(T element) {
+		tree = insert(element, tree);
+	}
+	
+	public void delete(T element) {
+		tree = delete(element, tree);
+	}
+	
+	// Surcharge les méthodes min & max pour appeler avec l'instance sans passer l'arbre en paramètre
+	public T trouveMax() {
+		return trouveMax(tree);
+	}
+	
+	public T trouveMin() {
+		return trouveMin(tree);
+	}
+	
+	private T trouveMax(BinTree<T> tree) {
 		
 		while (!(tree.sad() instanceof Feuille)) {
 			tree = tree.sad();
@@ -10,7 +80,7 @@ public class SearchTree {
 		return tree.racine();
 	}
 	
-	public static <T> T trouveMin(BinTree<T> tree) {
+	private <T> T trouveMin(BinTree<T> tree) {
 		
 		while (!(tree.sag() instanceof Feuille)) {
 			tree = tree.sag();
@@ -19,7 +89,7 @@ public class SearchTree {
 	}
 	
 	
-	public static <T extends Comparable<T>> BinTree<T> insert(T element, BinTree<T> tree) {
+	private BinTree<T> insert(T element, BinTree<T> tree) {
 		
 		if (tree instanceof Feuille) {
 			return new Noeud<T>(element, new Feuille<T>(), new Feuille<T>());
@@ -40,7 +110,7 @@ public class SearchTree {
 	}
 	
 
-	public static <T extends Comparable<T>> BinTree<T> delete(T element, BinTree<T> tree) {
+	private BinTree<T> delete(T element, BinTree<T> tree) {
 		
 		// Si l'élément est une feuile, donc vide, on retourne la feuille
 		if (tree instanceof Feuille) {
@@ -76,29 +146,4 @@ public class SearchTree {
 		}	
 
 	}
-	
-	
-	/**
-	 * Method de test pour valider les méthodes
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		
-		BinTree<Integer> tree = new Feuille<>();
-		
-		tree = insert(5, tree);
-		tree = insert(2, tree);
-		tree = insert(6, tree);
-		tree = insert(7, tree);
-		tree = insert(4, tree);
-		tree = insert(9, tree);
-		tree = insert(1, tree);
-		tree = insert(3, tree);
-		
-		System.out.println(tree.infixe());
-		tree = delete(2, tree);
-		System.out.println(tree.infixe());
-		
-	}
-
 }

@@ -31,7 +31,7 @@ public class Noeud<T extends Comparable<T>> implements BinTree<T> {
 
 	public int hauteur() {
 		int g = left.hauteur();
-		int d = left.hauteur();
+		int d = right.hauteur();
 		int res = Math.max(g, d);
 		return 1 + res;
 	}
