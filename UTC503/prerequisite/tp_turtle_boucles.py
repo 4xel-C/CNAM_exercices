@@ -225,21 +225,94 @@ def triangle_up(l=None, h=None, x=0, y=0):
     # largeur
     if l is not None:
         for i in range(l):
-            goto(x + (l // 2 - i), y - i)
+            goto(x - (l // 2 + i), y + i)
             pendown()
-            forward(2 * i)
+            forward(l - 2 * i)
             penup()
 
     # hauteur
     elif h is not None:
         for i in range(h):
-            goto(x + h - i, y - i)
+            goto(x - h + i, y + i)
             pendown()
-            forward(2 * i)
+            forward(2 * h - 2 * i)
             penup()
 
 
-triangle_up(h=120)
+def dessiner_losange(h=100, x=0, y=0):
+    penup()
+
+    for i in range(h // 2):
+        goto(x + i, y + i)
+        pendown()
+        forward(h - 2 * i)
+        penup()
+
+    for i in range(h // 2):
+        goto(x + i, y - i)
+        pendown()
+        forward(h - 2 * i)
+        penup()
 
 
+def dessiner_cercle(r=50, x=0, y=0):
+    penup()
+
+    goto(r // 2, y)
+    left(90)
+    pendown()
+    for _ in range(360):
+        forward(1)
+        right(1)
+
+    penup()
+
+
+def dessiner_spirale(L=200, x=0, y=0):
+    penup()
+    goto(x, y)
+
+    pendown()
+
+    while L >= 0:
+        forward(L)
+        right(90)
+        L = L - 3
+    penup()
+
+
+def dessiner_etoile(L=200, angle=158, decay=1, x=0, y=0):
+    penup()
+    goto(x, y)
+
+    left(90)
+    right(angle // 2)
+    pendown()
+
+    while L >= 0:
+        forward(L)
+        right(angle)
+        L = L - decay
+
+
+def dessiner_sapin(hauteur=3, x=0, y=0):
+    h_bloc = hauteur * 10
+    h_pied = hauteur * 10 + 10
+    l_pied = hauteur * 10 + 10
+    h_sommet = hauteur * 10
+    n_blocs = hauteur
+
+    # dessiner pied centré
+    rectangle_plein(h_pied, l_pied, x - l_pied // 2, y)
+
+    # dessiner les triangles
+    for i in range(n_blocs):
+        triangle_up(h=h_bloc + (10 * n_blocs) - 5 * i, x=x, y=y)
+        y = y + h_bloc
+
+    # dessiner le sommet
+    triangle_up(h=h_sommet, x=x, y=y)
+
+
+dessiner_sapin()
 done()
