@@ -3,6 +3,7 @@ import jeuvie.bestiole.Dauphin;
 
 import controleur.Controleur;
 import jeuvie.ocean.HauteMer;
+import jeuvie.ocean.BordDeCote;
 import jeuvie.ocean.Ocean;
 import java.util.ArrayList;
 import jeuvie.ocean.vague.casemer.Case;
@@ -42,12 +43,12 @@ public class JeuVie {
 //		}
 //		
 		
-		//new Controleur(new BordDeCote(Ocean.PI));
+		new Controleur(new BordDeCote(Ocean.PI));
 		//new Controleur(new BordDeCote(Ocean.ALEA));
 
 //		new Controleur(new HauteMer(Ocean.ALEA));
 		//new Controleur(new HauteMer(Ocean.BARRE));
-		new Controleur(new HauteMer(Ocean.CANON));
+//		new Controleur(new HauteMer(Ocean.CANON));
 		// new Controleur(new HauteMer(Ocean.CLOWN), Controleur.ITER_CLOWN);
 		//new Controleur(new HauteMer(Ocean.PI), Controleur.ITER_PI);
 		//new Controleur(new HauteMer(Ocean.GRAND_VAISSEAU));
